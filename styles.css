@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #f3efe6;
+  --color-paper: #fffcf7;
+  --color-navy: #1a2744;
+  --color-navy-soft: #243656;
+  --color-ink: #1a2744;
+  --color-slate: #5c6b7c;
+  --color-foam: #c9d3e0;
+  --color-line: #e4dccf;
+  --color-teal: #1f6f78;
+  --color-teal-deep: #16555c;
+  --color-mist: #e5f2f3;
+  --color-lavender: #6f6194;
+  --color-lilac: #f1edf8;
+  --color-danger: #8d3b48;
+  --color-danger-soft: #f8ecee;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-urdu: "Noto Nastaliq Urdu", "Noto Naskh Arabic", serif;
+  --shadow-card: 0 1px 2px rgb(26 39 68 / 0.05), 0 12px 32px rgb(26 39 68 / 0.06);
+  --radius-card: 1.15rem;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    background: var(--color-ivory);
+    color: var(--color-ink);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    text-wrap: pretty;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  html[lang="ur"] body {
+    font-family: var(--font-urdu);
+    line-height: 2;
+  }
+
+  html[lang="ur"] h1,
+  html[lang="ur"] h2,
+  html[lang="ur"] h3,
+  html[lang="ur"] button,
+  html[lang="ur"] input,
+  html[lang="ur"] textarea,
+  html[lang="ur"] select {
+    line-height: 1.8;
+  }
+
+  input, textarea, select {
+    font: inherit;
+  }
+}
+
+@utility num {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  body * { visibility: hidden; }
+  .print-root, .print-root * { visibility: visible; }
+  .print-root { position: absolute; inset: 0; background: white; }
+  .no-print { display: none !important; }
+}
